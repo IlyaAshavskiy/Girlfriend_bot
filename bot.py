@@ -3,6 +3,7 @@ import time
 import telebot
 import config
 import telegram
+
 # import goslate
 # import urllib2
 from textblob import TextBlob
@@ -16,16 +17,20 @@ bot1 = telegram.Bot(config.token)
 
 @bot.message_handler(func=lambda message: True, content_types=['text'])
 def translate_msg(message):
-    if (len(message.text) > 3):
-        b = TextBlob(unicode(message.text))
-        if (b.detect_language() == "ru"):
-            tr_text = unicode(b.translate(to="en"))
-            bot.send_message(message.chat.id, tr_text)
-        if (b.detect_language() == "en"):
-            tr_text = unicode(b.translate(to="ru"))
-            bot.send_message(message.chat.id, tr_text)
-
-
+    try:
+        if (len(message.text) > 3):
+            b = TextBlob(unicode(message.text))
+            if (b.detect_language() == "ru"):
+                tr_text = unicode(b.translate(to="en"))
+                bot.send_message(message.chat.id, tr_text)
+            if (b.detect_language() == "en"):
+                tr_text = unicode(b.translate(to="ru"))
+                bot.send_message(message.chat.id, tr_text)
+    except Exception as e:
+        print (e.message)
+        bot.send_message(message.chat.id, "Sorry Boss,can't translate :("
+                                          " Try another message, please " +
+                                          telegram.Emoji.KISSING_FACE)
 
 
 #def main_msg(message):
