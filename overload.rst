@@ -1,6 +1,6 @@
-==========================================
+=============
 Overload spec
-==========================================
+=============
 Problem description
 ===================
 Sometimes one of the nodes gets overloaded on cpu or ram because of high libvirt workload. In this case cloud operator should migrate some virtual machines from the overloaded node to the others. OpenStack Compute Load Balancer is developed to optimize resource usage in compute nodes, reduce response time and energy usage.
@@ -44,10 +44,10 @@ The node that VMs should be migrated from.
    :header-rows: 1
 
    * - Advantages
-     - High adaptability to workload changes in a cluster
-     - Perspectively can provide an opportunity to dynamically scale the cluster
-   * - Disadvantages
+     - Disadvantages
+   * - High adaptability to workload changes in a cluster
      - Harder to implement as compared with the threshold algorithm
+     - Perspectively can provide an opportunity to dynamically scale the cluster
      - Requires additional computation of acceptable standard deviations, based on the number of compute nodes in the cluster
 
 
@@ -76,8 +76,8 @@ The node that VMs should be migrated from, otherwise None
    :header-rows: 1
 
    * - Advantages
-     - Simple to implement
-   * - Disadvantages
+     - Disadvantages
+   * - Simple to implement
      - The threshold values are constants and cannot be dynamically changed. That's why this algorithm is poorly adaptive to workload changes in a cluster.
 
 
@@ -121,11 +121,13 @@ Method: GET
 PATH: /v2/{project_id}/loadbalancer
 
 Security impact
---------------------
+---------------
 None
+
 Notifications impact
 --------------------
 None
+
 Other end user impact
 ---------------------
 None
@@ -137,9 +139,11 @@ There are new methods in Conductor API and Nova API, that do not affect performa
 Other deployer impact
 ---------------------
 None
+
 Developer impact
 ----------------
 None
+
 Implementation
 ==============
 
