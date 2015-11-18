@@ -41,7 +41,7 @@ The node that VMs should be migrated from.
 
 
 .. list-table:: Summary
-   :header-rows: 1
+   :header-rows: 2
 
    * - Advantages
      - Disadvantages
